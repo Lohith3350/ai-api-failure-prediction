@@ -2,39 +2,60 @@
 
 Predict API degradation before outages, explain probable causes, estimate cascading impact, and recommend preventive actions.
 
-## Project status
-Starter scaffold for a six-member datathon team. Modules are intentionally lightweight placeholders; implement them in separate branches.
+## Project Status
+
+Starter scaffold for a six-member datathon team. Modules are intentionally lightweight placeholders and will be implemented in separate feature branches.
 
 ## Architecture
+
 1. Simulated APIs and telemetry
 2. Telemetry ingestion and storage
-3. Feature engineering and ML prediction
+3. Feature engineering and machine learning prediction
 4. Dependency graph and root-cause analysis
-5. Risk/decision engine
-6. FastAPI backend + React dashboard
+5. Risk and decision engine
+6. FastAPI backend and React dashboard
 
-## Team ownership
-- Lohith: integration, API contracts, backend entry point, releases
-- Kishor: simulator and telemetry
-- Namith: ML pipeline and model evaluation
-- Mdha: dependency graph and root-cause analysis
-- Meghana: React dashboard
-- Parvathi: decision engine, tests, evaluation
+## Team Ownership
 
-## Quick start (backend scaffold)
-```bash
+- **Lohith:** Integration, API contracts, backend entry point, releases
+- **Kishor:** API simulator and telemetry
+- **Namith:** ML pipeline, feature engineering, and model evaluation
+- **Medha:** Dependency graph and root-cause analysis
+- **Meghana:** React dashboard
+- **Parvathi:** Decision engine, testing, and evaluation
+
+## Quick Start — Backend
+
+Create and activate a virtual environment:
+
+```powershell
 python -m venv .venv
-# Windows PowerShell:
 .venv\Scripts\Activate.ps1
-# macOS/Linux:
-# source .venv/bin/activate
+```
+
+Install dependencies:
+
+```powershell
 pip install -r backend/requirements.txt
+```
+
+Start the backend:
+
+```powershell
 uvicorn backend.app.main:app --reload
 ```
-Open `http://127.0.0.1:8000/docs`.
 
-## Branching workflow
-Create one branch per feature, e.g. `feature/telemetry-simulator`. Push changes and open a pull request into `main`. Do not push directly to `main` after the scaffold is established.
+Open the API documentation at http://127.0.0.1:8000/docs.
 
-## Important design rule
-Agree on API contracts before implementing integrations. Use synthetic data initially; do not claim real-world prediction performance until evaluated on appropriate data.
+## Branching Workflow
+
+Create a separate feature branch for each module, such as `feature/telemetry-simulator`.
+
+Push changes to the corresponding branch and open a pull request into `main`. Do not push feature changes directly to `main`.
+
+## Important Design Rules
+
+- Agree on API contracts before integrating modules.
+- Use synthetic telemetry data during initial development.
+- Evaluate the model before making claims about real-world prediction accuracy.
+- Test integrations before merging pull requests into `main`.
