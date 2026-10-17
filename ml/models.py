@@ -21,6 +21,7 @@ import joblib
 from xgboost import XGBClassifier
 from sklearn.ensemble import IsolationForest
 from sklearn.calibration import CalibratedClassifierCV
+from sklearn.frozen import FrozenEstimator
 from ml.config import XGBOOST_PARAMS, IFOREST_PARAMS, MODEL_DIR, MODEL_VERSION
 
 
@@ -61,9 +62,12 @@ class FailurePredictionModel:
         raw_xgb.fit(X_train, y_train)
         self.xgb_model = raw_xgb
 
-        # Use sigmoid calibration to guarantee well-calibrated probabilities
+                # Calibrate the already-fitted classifier using held-out validation data.
         if X_val is not None and y_val is not None and len(np.unique(y_val)) > 1:
-            calibrator = CalibratedClassifierCV(estimator=raw_xgb, cv="prefit", method="sigmoid")
+            calibrator = CalibratedClassifierCV(
+                estimator=FrozenEstimator(raw_xgb),
+                method="sigmoid",
+            )
             calibrator.fit(X_val, y_val)
             self.calibrated_xgb = calibrator
         else:
