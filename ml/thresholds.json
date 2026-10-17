@@ -1,0 +1,18 @@
+{
+  "order-service": {
+    "response_time_ms": 160.0,
+    "timeout_count": 8,
+    "error_rate": 0.3
+  },
+  "payment-service": {
+    "response_time_ms": 150.0,
+    "timeout_count": 5,
+    "error_rate": 0.2
+  },
+  "user-service": {
+    "response_time_ms": 70.0,
+    "timeout_count": 4,
+    "error_rate": 0.2
+  },
+  "_method": "tukey_upper_fence_Q3+1.5*IQR_widened_for_cascade"
+}
